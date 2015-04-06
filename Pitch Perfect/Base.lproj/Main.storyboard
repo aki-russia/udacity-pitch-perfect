@@ -17,13 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy8-vb-dTt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording in progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy8-vb-dTt">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="164" y="332" width="72.5" height="20.5"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="164" y="446" width="72.5" height="20.5"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQR-Mf-Cc9">
@@ -47,12 +50,23 @@
                                     <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fqy-lZ-J8r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrZ-ev-lfm">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="131" y="446" width="138" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.51372549019607838" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QQR-Mf-Cc9" secondAttribute="centerX" id="9cp-u2-Fnd"/>
                             <constraint firstAttribute="centerX" secondItem="Hy8-vb-dTt" secondAttribute="centerX" id="TbK-uK-R8f"/>
+                            <constraint firstItem="BrZ-ev-lfm" firstAttribute="top" secondItem="kA0-3d-B1O" secondAttribute="bottom" constant="21" id="ada-MU-uXi"/>
                             <constraint firstAttribute="centerY" secondItem="kA0-3d-B1O" secondAttribute="centerY" id="e9i-4l-t7l"/>
+                            <constraint firstAttribute="centerX" secondItem="BrZ-ev-lfm" secondAttribute="centerX" id="eSI-Ka-S6G"/>
                             <constraint firstItem="Hy8-vb-dTt" firstAttribute="top" secondItem="kA0-3d-B1O" secondAttribute="bottom" constant="21" id="iSd-fq-cds"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="QQR-Mf-Cc9" secondAttribute="bottom" constant="57" id="uqn-gH-DD4"/>
                             <constraint firstAttribute="centerX" secondItem="kA0-3d-B1O" secondAttribute="centerX" id="y2T-RF-SfI"/>
@@ -62,14 +76,17 @@
                                 <exclude reference="Hy8-vb-dTt"/>
                                 <exclude reference="QQR-Mf-Cc9"/>
                                 <exclude reference="kA0-3d-B1O"/>
+                                <exclude reference="BrZ-ev-lfm"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="uqn-gH-DD4"/>
+                                <exclude reference="e9i-4l-t7l"/>
+                                <exclude reference="y2T-RF-SfI"/>
+                                <exclude reference="ada-MU-uXi"/>
+                                <exclude reference="eSI-Ka-S6G"/>
                                 <exclude reference="TbK-uK-R8f"/>
                                 <exclude reference="iSd-fq-cds"/>
                                 <exclude reference="9cp-u2-Fnd"/>
-                                <exclude reference="e9i-4l-t7l"/>
-                                <exclude reference="y2T-RF-SfI"/>
+                                <exclude reference="uqn-gH-DD4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -79,12 +96,21 @@
                                 <include reference="kA0-3d-B1O"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="uqn-gH-DD4"/>
+                                <include reference="e9i-4l-t7l"/>
+                                <include reference="y2T-RF-SfI"/>
                                 <include reference="TbK-uK-R8f"/>
                                 <include reference="iSd-fq-cds"/>
                                 <include reference="9cp-u2-Fnd"/>
-                                <include reference="e9i-4l-t7l"/>
-                                <include reference="y2T-RF-SfI"/>
+                                <include reference="uqn-gH-DD4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="BrZ-ev-lfm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ada-MU-uXi"/>
+                                <include reference="eSI-Ka-S6G"/>
                             </mask>
                         </variation>
                     </view>
@@ -93,6 +119,7 @@
                         <outlet property="recordButton" destination="kA0-3d-B1O" id="DgJ-fw-eFU"/>
                         <outlet property="recordingLabel" destination="Hy8-vb-dTt" id="nVi-tU-S7h"/>
                         <outlet property="stopButton" destination="QQR-Mf-Cc9" id="LJL-Pf-7zj"/>
+                        <outlet property="tapToRecordLabel" destination="BrZ-ev-lfm" id="fyF-8S-oGS"/>
                         <segue destination="gW7-Qc-4VX" kind="show" identifier="stopRecording" id="SGA-hV-Cn1"/>
                     </connections>
                 </viewController>

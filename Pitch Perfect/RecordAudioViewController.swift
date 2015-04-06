@@ -15,6 +15,8 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
+    @IBOutlet weak var tapToRecordLabel: UILabel!
+    
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
@@ -23,6 +25,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.enabled = true
         stopButton.hidden = true
         recordingLabel.hidden = true
+        tapToRecordLabel.hidden = false
     }
 
     override func viewDidLoad() {
@@ -41,6 +44,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.enabled = false
         recordingLabel.hidden = false
         stopButton.hidden = false
+        tapToRecordLabel.hidden = true
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
@@ -65,10 +69,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         
         if(flag){
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
-            
+            recordedAudio = RecordedAudio(url: recorder.url)
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
             println("not success");
