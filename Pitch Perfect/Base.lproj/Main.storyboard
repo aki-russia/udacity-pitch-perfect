@@ -199,14 +199,41 @@
                                     <action selector="playAsDevil:" destination="gW7-Qc-4VX" eventType="touchUpInside" id="HGs-ah-aGX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knI-3S-DFt">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="ghost">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="160" y="204" width="80" height="80"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playAsGhost:" destination="gW7-Qc-4VX" eventType="touchUpInside" id="QIA-iG-m8X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adK-JJ-bsf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="radio">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="274" y="204" width="80" height="80"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playAsRadio:" destination="gW7-Qc-4VX" eventType="touchUpInside" id="fua-dD-yoi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="knI-3S-DFt" secondAttribute="centerX" id="DPF-nw-acv"/>
                             <constraint firstItem="2Xj-gC-mqZ" firstAttribute="top" secondItem="0lY-w8-Lco" secondAttribute="bottom" constant="30" id="EAD-a4-uBU"/>
+                            <constraint firstItem="knI-3S-DFt" firstAttribute="top" secondItem="UAS-fU-Gap" secondAttribute="bottom" constant="30" id="OLF-UI-Mig"/>
                             <constraint firstItem="YOR-jN-vtz" firstAttribute="top" secondItem="0lY-w8-Lco" secondAttribute="bottom" constant="30" id="YR6-i3-4YM"/>
                             <constraint firstAttribute="centerX" secondItem="C1s-Yi-rVt" secondAttribute="centerX" id="fdr-w0-mxr"/>
                             <constraint firstItem="o3R-Yd-xeh" firstAttribute="top" secondItem="YOR-jN-vtz" secondAttribute="bottom" constant="30" id="fzd-fW-7de"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Xj-gC-mqZ" secondAttribute="trailing" constant="30" id="iOr-bh-2rs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="adK-JJ-bsf" secondAttribute="trailing" constant="30" id="pUk-46-BiJ"/>
                             <constraint firstItem="6Xr-yz-U07" firstAttribute="top" secondItem="C1s-Yi-rVt" secondAttribute="bottom" constant="71" id="q7I-2D-N2g">
                                 <variation key="heightClass=regular-widthClass=compact" constant="57"/>
                             </constraint>
@@ -214,6 +241,7 @@
                             <constraint firstItem="UAS-fU-Gap" firstAttribute="top" secondItem="0lY-w8-Lco" secondAttribute="bottom" constant="30" id="qNb-4F-0wM"/>
                             <constraint firstItem="o3R-Yd-xeh" firstAttribute="leading" secondItem="DoD-ZI-BQe" secondAttribute="leadingMargin" constant="30" id="qbf-v9-eIP"/>
                             <constraint firstItem="YOR-jN-vtz" firstAttribute="leading" secondItem="DoD-ZI-BQe" secondAttribute="leadingMargin" constant="30" id="t0b-Uo-g2Q"/>
+                            <constraint firstItem="adK-JJ-bsf" firstAttribute="top" secondItem="2Xj-gC-mqZ" secondAttribute="bottom" constant="30" id="t9R-Ls-WJB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -221,6 +249,8 @@
                                 <exclude reference="C1s-Yi-rVt"/>
                                 <exclude reference="2Xj-gC-mqZ"/>
                                 <exclude reference="o3R-Yd-xeh"/>
+                                <exclude reference="knI-3S-DFt"/>
+                                <exclude reference="adK-JJ-bsf"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="YR6-i3-4YM"/>
@@ -229,8 +259,12 @@
                                 <exclude reference="qNb-4F-0wM"/>
                                 <exclude reference="fzd-fW-7de"/>
                                 <exclude reference="qbf-v9-eIP"/>
+                                <exclude reference="DPF-nw-acv"/>
+                                <exclude reference="OLF-UI-Mig"/>
                                 <exclude reference="EAD-a4-uBU"/>
                                 <exclude reference="iOr-bh-2rs"/>
+                                <exclude reference="pUk-46-BiJ"/>
+                                <exclude reference="t9R-Ls-WJB"/>
                                 <exclude reference="fdr-w0-mxr"/>
                                 <exclude reference="q7I-2D-N2g"/>
                             </mask>
@@ -241,6 +275,8 @@
                                 <include reference="C1s-Yi-rVt"/>
                                 <include reference="2Xj-gC-mqZ"/>
                                 <include reference="o3R-Yd-xeh"/>
+                                <include reference="knI-3S-DFt"/>
+                                <include reference="adK-JJ-bsf"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="YR6-i3-4YM"/>
@@ -249,8 +285,12 @@
                                 <include reference="qNb-4F-0wM"/>
                                 <include reference="fzd-fW-7de"/>
                                 <include reference="qbf-v9-eIP"/>
+                                <include reference="DPF-nw-acv"/>
+                                <include reference="OLF-UI-Mig"/>
                                 <include reference="EAD-a4-uBU"/>
                                 <include reference="iOr-bh-2rs"/>
+                                <include reference="pUk-46-BiJ"/>
+                                <include reference="t9R-Ls-WJB"/>
                                 <include reference="fdr-w0-mxr"/>
                                 <include reference="q7I-2D-N2g"/>
                             </mask>
@@ -282,8 +322,10 @@
     </scenes>
     <resources>
         <image name="devil" width="50" height="50"/>
+        <image name="ghost" width="50" height="50"/>
         <image name="microphone" width="50" height="50"/>
         <image name="rabbit" width="50" height="50"/>
+        <image name="radio" width="50" height="50"/>
         <image name="rat" width="48" height="48"/>
         <image name="snail" width="50" height="50"/>
         <image name="stop" width="20" height="20"/>

@@ -11,7 +11,6 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
     
-    var audioPlayer:AVAudioPlayer!
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
     
@@ -19,10 +18,6 @@ class PlaySoundsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
-        audioPlayer.enableRate = true;
-
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
     }
@@ -33,60 +28,72 @@ class PlaySoundsViewController: UIViewController {
     }
     
     
-    func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
+    func playWithEffect(effect: AVAudioNode){
         audioEngine.stop()
         audioEngine.reset()
         
         var audioPlayerNode = AVAudioPlayerNode()
+        
         audioEngine.attachNode(audioPlayerNode)
         
-        var changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
-        
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        audioEngine.attachNode(effect)
+        audioEngine.connect(audioPlayerNode, to: effect, format: nil)
+        audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
-        
         audioPlayerNode.play()
     }
     
-    func playAudioWithVariableRate (rate: Float) {
-        audioPlayer.stop()
-        audioPlayer.currentTime = 0
-        audioPlayer.rate = rate;
-        audioPlayer.play();
+    
+    func playWithPitch(rate: Float = 1, pitch: Float = 1){
+        var changePitchEffect = AVAudioUnitTimePitch()
+        
+        changePitchEffect.rate = rate
+        changePitchEffect.pitch = pitch
+        playWithEffect(changePitchEffect)
+    }
+    
+    func playWithReverb(wetDryMix: Float){
+        var changeReverbEffect = AVAudioUnitReverb()
+        changeReverbEffect.wetDryMix = wetDryMix
+        playWithEffect(changeReverbEffect)
+    }
+    
+    func playWithDistortion(wetDryMix: Float, preGain: Float = 100){
+        var changeReverbEffect = AVAudioUnitDistortion()
+        changeReverbEffect.wetDryMix = wetDryMix
+        changeReverbEffect.preGain = preGain
+        playWithEffect(changeReverbEffect)
     }
     
 
     @IBAction func playAsSnail(sender: UIButton) {
-        playAudioWithVariableRate(0.5)
+        playWithPitch(rate: 0.5)
         
     }
+    
     @IBAction func playAsRabbit(sender: UIButton) {
-        playAudioWithVariableRate(2.0)
+        playWithPitch(rate: 2)
     }
 
     @IBAction func playAsRat(sender: UIButton) {
-        playAudioWithVariablePitch(1000)
+        playWithPitch(pitch: 1000)
+        
     }
+    
     @IBAction func playAsDevil(sender: UIButton) {
-        playAudioWithVariablePitch(-1000)
+        playWithPitch(pitch: -1000)
+    }
+    
+    @IBAction func playAsGhost(sender: UIButton) {
+        playWithReverb(100)
+    }
+    
+    @IBAction func playAsRadio(sender: UIButton) {
+        playWithDistortion(100, preGain: 20)
     }
     @IBAction func stopAudioPlayer(sender: UIButton) {
-        audioPlayer.stop();
+        audioEngine.stop()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
